@@ -18,7 +18,12 @@ Progress Report
 Questions about the Project
 - How many data samples do we need for the project?
   - We were thinking of having sprites of each different pokemon from each generation, but are not sure if it would be enough data samples.
+  - Will have to do more research on this for ourselves. We need at least 1 picture for every pokemon, but might need 5-6 images of each pokemon so the CNN can recognize the pokemons.
 - Are we allowed to use python libraries to help design our neural networks or do we have to design them from scratch?
+  - Use any python libraries available to help develop the CNN.
 - Are we allowed to use data samples from other previous works? 
+  - Yes, we can use data samples from other previous works.
 - We want our neural networks to guess the two types for each Pokemon. Can the neural network have two outputs, and how will it work? 
+  - Research Multilevel CNNs.
 - How should we handle special cases in our data samples? Should we include them or remove them? 
+  - For now, leave in the special cases to see what the CNN will do.
