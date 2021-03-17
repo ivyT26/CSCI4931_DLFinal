@@ -25,5 +25,6 @@ Questions about the Project
   - Yes, we can use data samples from other previous works.
 - We want our neural networks to guess the two types for each Pokemon. Can the neural network have two outputs, and how will it work? 
   - Research Multilevel CNNs.
+  - Here is a link for multi output CNNs: https://towardsdatascience.com/building-a-multi-output-convolutional-neural-network-with-keras-ed24c7bc1178
 - How should we handle special cases in our data samples? Should we include them or remove them? 
   - For now, leave in the special cases to see what the CNN will do.
