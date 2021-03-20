@@ -15,6 +15,11 @@ Progress Report
   - include Pokemon that have variants that change type
   - Pokemon #493, #351
 
+03/20: Image Processing(?) and Creating Model
+- Today, we focused on transferring the data samples to our repository and started framing our CNN model
+- Some concerns we had were mainly on how to modify the model to output multiple labels for each pokemon and how to sort the images (?)
+- We need to do more research on how to process the images and intially run the model
+
 Questions about the Project
 - How many data samples do we need for the project?
   - We were thinking of having sprites of each different pokemon from each generation, but are not sure if it would be enough data samples.
