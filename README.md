@@ -15,10 +15,14 @@ Progress Report
   - include Pokemon that have variants that change type
   - Pokemon #493, #351
 
-03/20: Image Processing(?) and Creating Model
+03/20: Image Processing and Creating Model
 - Today, we focused on transferring the data samples to our repository and started framing our CNN model
 - Some concerns we had were mainly on how to modify the model to output multiple labels for each pokemon and how to sort the images (?)
 - We need to do more research on how to process the images and intially run the model
+- This is the video we are referencing to help us get started with processing the image data and building the CNN: https://www.youtube.com/watch?v=qFJeN9V1ZsI&t=4521s or https://deeplizard.com/learn/video/LhEMXbjGV_4
+- Things to work on:
+  -  For processing the images, I noticed that a repository we are using the sprites for only have up to Gen V, so we need to add the sprites from Gen VI to Gen VII to satisfy our goal
+  - Goal is to have a basic framework of our CNN that takes in one input and gives us one output and have all the data processed, organized by class, and shuffled
 
 Questions about the Project
 - How many data samples do we need for the project?
@@ -30,6 +34,7 @@ Questions about the Project
   - Yes, we can use data samples from other previous works.
 - We want our neural networks to guess the two types for each Pokemon. Can the neural network have two outputs, and how will it work? 
   - Research Multilevel CNNs.
-  - Here is a link for multi output CNNs: https://towardsdatascience.com/building-a-multi-output-convolutional-neural-network-with-keras-ed24c7bc1178
+  - Here is a link for multi output CNNs by building two CNNs: https://towardsdatascience.com/building-a-multi-output-convolutional-neural-network-with-keras-ed24c7bc1178
+  - Another linkt for multi output CNNs without having to build two CNNs: https://kaushal28.github.io/Building-Multi-Output-CNN-with-Keras/
 - How should we handle special cases in our data samples? Should we include them or remove them? 
   - For now, leave in the special cases to see what the CNN will do.
