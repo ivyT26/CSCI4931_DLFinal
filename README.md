@@ -6,7 +6,7 @@ Neural Networks: Convolutional Neural Networks
 
 Progress Report
 03/13: Image Data Collection
-- for the image data collection, we are planning on using sample sprites from https://pokemondb.net/sprites/bulbasaur to obtain the images needed for classification
+- for the image data collection, we are planning on using sample sprites from https://pokemondb.net/sprites/ and https://veekun.com/dex/downloads to obtain the images needed for classification
 - our other option is to use resized sprites from other previous works as our data samples
 - we plan on collecting our data samples and inputting them in folders by type, then 
 - problem 1: some pokemon have appearance variants that change based on environmental factors (ex: Deerling, etc.)
