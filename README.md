@@ -20,8 +20,11 @@ Progress Report
 - Some concerns we had were mainly on how to modify the model to output multiple labels for each pokemon and how to sort the images (?)
 - We need to do more research on how to process the images and intially run the model
 - This is the video we are referencing to help us get started with processing the image data and building the CNN: https://www.youtube.com/watch?v=qFJeN9V1ZsI&t=4521s or https://deeplizard.com/learn/video/LhEMXbjGV_4
+- Here is the site that has the most updated csv file of all the Pokemon's stats: https://www.kaggle.com/mariotormo/complete-pokemon-dataset-updated-090420?select=pokedex_%28Update.04.20%29.csv
+  - The types for each Pokemon are the most updated from when they recently appeared, so our CNN will focus on deciding the most updated types for each Pokemon regardless of which generation and games they appeared in (since some Pokemon have had changed types based on the newer generations and games they have appeared in)
 - Things to work on:
-  -  For processing the images, I noticed that a repository we are using the sprites for only have up to Gen V, so we need to add the sprites from Gen VI to Gen VII to satisfy our goal
+  - For processing the images, I noticed that a repository we are using the sprites for only have up to Gen V, so we need to add the sprites from Gen VI to Gen VII and sort them
+  - For the sorting the leftover images, we will have to develop our own way to sort the images (cause there is no way we are doing it by hand) 
   - Goal is to have a basic framework of our CNN that takes in one input and gives us one output and have all the data processed, organized by class, and shuffled
 
 Questions about the Project
