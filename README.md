@@ -30,6 +30,14 @@ Progress Report
     - This is the closest site to having sprites for the other generations (have not looked at it myself yet): https://reliccastle.com/resources/383/  
   - Goal is to have a basic framework of our CNN that takes in one input and gives us one output and have all the data processed, organized by class, and shuffled
 
+04/03: Editing Model to output primary Pokemon type
+- Today, we added more convolutional and pooling layers to help analyze more features of our model. We also added 3 dropout layers with a dropout rate of 0.2 to reduce the overfitting problem in the model.
+- During our model testing and experimentation, we altered the batch size, pooling filter size, and increased the number of epochs to 50.
+- We also figured out why the outputs for some of the results of the test batch were all zero and fixed it so that it takes the maximum value out of all the values in the row versus checking each index of each row if they are > 0.5 to validate that they are apart of that class.
+- Our goals now are to figure out how to see how close our test predicts are to the true test labels. (we have a function that checked how many of the predictions were correct)
+  - 2nd goal is to make the neural network output 2 types instead of 1 (which will require some extra research).
+  - Last goal (if there is time) is to work on obtaining and sorting images from generations 6 - 8 and add to the model.
+
 Questions about the Project
 - How many data samples do we need for the project?
   - We were thinking of having sprites of each different pokemon from each generation, but are not sure if it would be enough data samples.
