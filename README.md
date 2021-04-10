@@ -38,6 +38,24 @@ Progress Report
   - 2nd goal is to make the neural network output 2 types instead of 1 (which will require some extra research).
   - Last goal (if there is time) is to work on obtaining and sorting images from generations 6 - 8 and add to the model.
 
+04/10: Editing Model to output multiple types for each Pokemon
+- Today, we did some research and decided to use a sigmoid activation function in the last layer for classifying multiple labels for each image. Using the sigmoid function will allow each image to be classified to each possible class independently of each other.
+- For determining if the image fits in the class or not based on the given probability, we will find the two classes with the highest probabilities, where the first class is the primary type and the second class is the secondary type (still in progress). Another possibility is taking the output and for each class if the probability is greater than 0.5, then the image belongs to that class, but it will be hard to determine which is the primary and secondary types and risks getting an output where some images cannot be classified into a class (all 0s output). (Ask the professor about that) ****
+- We also decided to move all the images classified in type 2 into the main folders so that Pokemons with multiple types can be classified. For example, Bulbasaur has two types (Grass and Poision), so Bulbasaur images will be placed in both Grass and Poison. For Pokemon that do not have a secondary type, another folder labeled 'None' will store those images of Pokemon with no second type.
+- We also did some more testing and modified our architecture as needed to improve the accuracy and mean squared error of our model.
+- We also decided to just stick with classifying 5 generations of Pokemon, since it would take extra time to obtain the images and save it to our local machines and code it to be sorted by primary and secondary types for Pokemons in generations 6-8 and all Pokemons in the games past generation 6.
+- Other tasks done today:
+  - Researched multi label CNN and implemented it into model
+  - Researched other CNN architectures to help hyper tune parameters (kernel size, pool size, pooling function, number of convolutional layers, dropout rate, etc.)
+  - Modified function to calculate accuracy of predicted test data set (problem encountered below)
+- Some problems encountered or things to do in the future
+  - Image Processing error?
+  - Might need to research more on good metrics to help analyze model and results of data?
+  - Need to edit architecture definitely, but that has been delayed due to implementing the multi label stuff.
+  - Problem with interpretting output based on input.
+    - We have 2 duplicate input images for each Pokemon and have placed them in two folders, one for the primary type and the second type. The model will be able to predict the labels, but there will be two outputs for the same image? We are having trouble trying to calculate the error of our test data given the ground truth (which is separated into two different outputs bc there are two duplicate images in different classes) and the predicted values (which will most likely be separated into two outputs bc there are duplicate images as input but for different classes). How do we calculate the error? Do we take the two outputs, calculate the error for the two classes, and average it somehow? ****
+    - We plan on meeting with the Professor about our progress and confusion on 04/12
+
 Questions about the Project
 - How many data samples do we need for the project?
   - We were thinking of having sprites of each different pokemon from each generation, but are not sure if it would be enough data samples.
