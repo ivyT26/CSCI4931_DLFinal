@@ -49,6 +49,7 @@ Questions about the Project
 - We want our neural networks to guess the two types for each Pokemon. Can the neural network have two outputs, and how will it work? 
   - Research Multilevel CNNs.
   - Here is a link for multi output CNNs by building two CNNs: https://towardsdatascience.com/building-a-multi-output-convolutional-neural-network-with-keras-ed24c7bc1178
-  - Another linkt for multi output CNNs without having to build two CNNs: https://kaushal28.github.io/Building-Multi-Output-CNN-with-Keras/
+  - Another link for multi output CNNs without having to build two CNNs: https://kaushal28.github.io/Building-Multi-Output-CNN-with-Keras/
+  - Link #3 for multilabel CNN: https://towardsdatascience.com/multi-label-image-classification-with-neural-network-keras-ddc1ab1afede
 - How should we handle special cases in our data samples? Should we include them or remove them? 
   - For now, leave in the special cases to see what the CNN will do.
