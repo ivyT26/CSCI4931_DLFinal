@@ -55,6 +55,27 @@ Progress Report
   - Problem with interpretting output based on input.
     - We have 2 duplicate input images for each Pokemon and have placed them in two folders, one for the primary type and the second type. The model will be able to predict the labels, but there will be two outputs for the same image? We are having trouble trying to calculate the error of our test data given the ground truth (which is separated into two different outputs bc there are two duplicate images in different classes) and the predicted values (which will most likely be separated into two outputs bc there are duplicate images as input but for different classes). How do we calculate the error? Do we take the two outputs, calculate the error for the two classes, and average it somehow? ****
     - We plan on meeting with the Professor about our progress and confusion on 04/12
+ 
+ 04/18: Ivy's offline work
+ - Researched ways to oversample dataset for more even distribution. Implemented option 1 in the code. 
+   - 1) random oversampling: choosing random images from current dataset in each class to duplicate
+   - 2) weights: using higher weights for minority classes that have less data than majority classes
+   - 3) using SMOTE: a library to oversample dataset (usually used for string data)
+ - Undersampling is not advised because having more data gives more information about the patterns the model can learn, and undersampling loses data information in exchange for eqaul distribution of data for each class.
+ - I have emailed the professor, but have not gotten a response back about using a single model compared to multiple classification models to implement multilabel classification, so on my end I have decided to work with both models. The first one is where there are two models that classify type 1 and type 2 using softmax in last layer and categorical cross entropy loss function, and the second model is a single model that classifies the top 2 most probable classes using sigmoid in last layer and a binary cross entropy loss function.
+   - For the 2 classification models, the datasets will be separated into type 1 and type 2, and within each folder the Pokemon's primary type will be sorted into 1 of 18 types in the type 1 folder, while the Pokemon's secondary type will be sorted into 1 of 19 types (includes None, where a Pokemon may not have a second type) in the type 2 folder. 
+   - For the single classification model, the datasets will be stored into one folder with subfolders holding each type, where duplicates of a single Pokemon will be located in 2 folders, the first picture in its primary type and the second picture in its secondary type. (ie. a Bulbasaur image will be stored in the 'Grass' class and the 'Poison' class)
+- By the end of 04/19, I should have the oversampling code done for both models (today I just have the code implemented for the first model that has two classification models). If there is time for me on 04/19, I will research other models and see how the current models can be improved upon.
+- Links for multilabel classification
+  - https://www.geeksforgeeks.org/an-introduction-to-multilabel-classification/
+  - https://kgptalkie.com/multi-label-image-classification-on-movies-poster-using-cnn/
+  - https://gsurma.medium.com/image-tagger-multi-label-cnn-image-classification-5b0a87f0084d
+  - https://machinelearningmastery.com/multi-label-classification-with-deep-learning/
+  - https://towardsdatascience.com/journey-to-the-center-of-multi-label-classification-384c40229bff
+- Links for oversampling and coding it
+  - https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/
+  - more links in the comments of the given code
+- Future works: I really would love to work on this project and improve on it for generations 6-8, which will take a lot of data collection on my part. Also, I would like to explore more efficient classification models and more accurate metrics to measure efficiency of classification models in the near future. 
 
 Questions about the Project
 - How many data samples do we need for the project?
@@ -65,7 +86,7 @@ Questions about the Project
 - Are we allowed to use data samples from other previous works? 
   - Yes, we can use data samples from other previous works.
 - We want our neural networks to guess the two types for each Pokemon. Can the neural network have two outputs, and how will it work? 
-  - Research Multilevel CNNs.
+  - Research Multilabel CNNs.
   - Here is a link for multi output CNNs by building two CNNs: https://towardsdatascience.com/building-a-multi-output-convolutional-neural-network-with-keras-ed24c7bc1178
   - Another link for multi output CNNs without having to build two CNNs: https://kaushal28.github.io/Building-Multi-Output-CNN-with-Keras/
   - Link #3 for multilabel CNN: https://towardsdatascience.com/multi-label-image-classification-with-neural-network-keras-ddc1ab1afede
