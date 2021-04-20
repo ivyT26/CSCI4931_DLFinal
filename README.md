@@ -30,6 +30,53 @@ Progress Report
     - This is the closest site to having sprites for the other generations (have not looked at it myself yet): https://reliccastle.com/resources/383/  
   - Goal is to have a basic framework of our CNN that takes in one input and gives us one output and have all the data processed, organized by class, and shuffled
 
+04/03: Editing Model to output primary Pokemon type
+- Today, we added more convolutional and pooling layers to help analyze more features of our model. We also added 3 dropout layers with a dropout rate of 0.2 to reduce the overfitting problem in the model.
+- During our model testing and experimentation, we altered the batch size, pooling filter size, and increased the number of epochs to 50.
+- We also figured out why the outputs for some of the results of the test batch were all zero and fixed it so that it takes the maximum value out of all the values in the row versus checking each index of each row if they are > 0.5 to validate that they are apart of that class.
+- Our goals now are to figure out how to see how close our test predicts are to the true test labels. (we have a function that checked how many of the predictions were correct)
+  - 2nd goal is to make the neural network output 2 types instead of 1 (which will require some extra research).
+  - Last goal (if there is time) is to work on obtaining and sorting images from generations 6 - 8 and add to the model.
+
+04/10: Editing Model to output multiple types for each Pokemon
+- Today, we did some research and decided to use a sigmoid activation function in the last layer for classifying multiple labels for each image. Using the sigmoid function will allow each image to be classified to each possible class independently of each other.
+- For determining if the image fits in the class or not based on the given probability, we will find the two classes with the highest probabilities, where the first class is the primary type and the second class is the secondary type (still in progress). Another possibility is taking the output and for each class if the probability is greater than 0.5, then the image belongs to that class, but it will be hard to determine which is the primary and secondary types and risks getting an output where some images cannot be classified into a class (all 0s output). (Ask the professor about that) ****
+- We also decided to move all the images classified in type 2 into the main folders so that Pokemons with multiple types can be classified. For example, Bulbasaur has two types (Grass and Poision), so Bulbasaur images will be placed in both Grass and Poison. For Pokemon that do not have a secondary type, another folder labeled 'None' will store those images of Pokemon with no second type.
+- We also did some more testing and modified our architecture as needed to improve the accuracy and mean squared error of our model.
+- We also decided to just stick with classifying 5 generations of Pokemon, since it would take extra time to obtain the images and save it to our local machines and code it to be sorted by primary and secondary types for Pokemons in generations 6-8 and all Pokemons in the games past generation 6.
+- Other tasks done today:
+  - Researched multi label CNN and implemented it into model
+  - Researched other CNN architectures to help hyper tune parameters (kernel size, pool size, pooling function, number of convolutional layers, dropout rate, etc.)
+  - Modified function to calculate accuracy of predicted test data set (problem encountered below)
+- Some problems encountered or things to do in the future
+  - Image Processing error?
+  - Might need to research more on good metrics to help analyze model and results of data?
+  - Need to edit architecture definitely, but that has been delayed due to implementing the multi label stuff.
+  - Problem with interpretting output based on input.
+    - We have 2 duplicate input images for each Pokemon and have placed them in two folders, one for the primary type and the second type. The model will be able to predict the labels, but there will be two outputs for the same image? We are having trouble trying to calculate the error of our test data given the ground truth (which is separated into two different outputs bc there are two duplicate images in different classes) and the predicted values (which will most likely be separated into two outputs bc there are duplicate images as input but for different classes). How do we calculate the error? Do we take the two outputs, calculate the error for the two classes, and average it somehow? ****
+    - We plan on meeting with the Professor about our progress and confusion on 04/12
+ 
+ 04/18: Ivy's offline work
+ - Researched ways to oversample dataset for more even distribution. Implemented option 1 in the code. 
+   - 1) random oversampling: choosing random images from current dataset in each class to duplicate
+   - 2) weights: using higher weights for minority classes that have less data than majority classes
+   - 3) using SMOTE: a library to oversample dataset (usually used for string data)
+ - Undersampling is not advised because having more data gives more information about the patterns the model can learn, and undersampling loses data information in exchange for eqaul distribution of data for each class.
+ - I have emailed the professor, but have not gotten a response back about using a single model compared to multiple classification models to implement multilabel classification, so on my end I have decided to work with both models. The first one is where there are two models that classify type 1 and type 2 using softmax in last layer and categorical cross entropy loss function, and the second model is a single model that classifies the top 2 most probable classes using sigmoid in last layer and a binary cross entropy loss function.
+   - For the 2 classification models, the datasets will be separated into type 1 and type 2, and within each folder the Pokemon's primary type will be sorted into 1 of 18 types in the type 1 folder, while the Pokemon's secondary type will be sorted into 1 of 19 types (includes None, where a Pokemon may not have a second type) in the type 2 folder. 
+   - For the single classification model, the datasets will be stored into one folder with subfolders holding each type, where duplicates of a single Pokemon will be located in 2 folders, the first picture in its primary type and the second picture in its secondary type. (ie. a Bulbasaur image will be stored in the 'Grass' class and the 'Poison' class)
+- By the end of 04/19, I should have the oversampling code done for both models (today I just have the code implemented for the first model that has two classification models). If there is time for me on 04/19, I will research other models and see how the current models can be improved upon.
+- Links for multilabel classification
+  - https://www.geeksforgeeks.org/an-introduction-to-multilabel-classification/
+  - https://kgptalkie.com/multi-label-image-classification-on-movies-poster-using-cnn/
+  - https://gsurma.medium.com/image-tagger-multi-label-cnn-image-classification-5b0a87f0084d
+  - https://machinelearningmastery.com/multi-label-classification-with-deep-learning/
+  - https://towardsdatascience.com/journey-to-the-center-of-multi-label-classification-384c40229bff
+- Links for oversampling and coding it
+  - https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/
+  - more links in the comments of the given code
+- Future works: I really would love to work on this project and improve on it for generations 6-8, which will take a lot of data collection on my part. Also, I would like to explore more efficient classification models and more accurate metrics to measure efficiency of classification models in the near future. 
+
 Questions about the Project
 - How many data samples do we need for the project?
   - We were thinking of having sprites of each different pokemon from each generation, but are not sure if it would be enough data samples.
@@ -39,8 +86,9 @@ Questions about the Project
 - Are we allowed to use data samples from other previous works? 
   - Yes, we can use data samples from other previous works.
 - We want our neural networks to guess the two types for each Pokemon. Can the neural network have two outputs, and how will it work? 
-  - Research Multilevel CNNs.
+  - Research Multilabel CNNs.
   - Here is a link for multi output CNNs by building two CNNs: https://towardsdatascience.com/building-a-multi-output-convolutional-neural-network-with-keras-ed24c7bc1178
-  - Another linkt for multi output CNNs without having to build two CNNs: https://kaushal28.github.io/Building-Multi-Output-CNN-with-Keras/
+  - Another link for multi output CNNs without having to build two CNNs: https://kaushal28.github.io/Building-Multi-Output-CNN-with-Keras/
+  - Link #3 for multilabel CNN: https://towardsdatascience.com/multi-label-image-classification-with-neural-network-keras-ddc1ab1afede
 - How should we handle special cases in our data samples? Should we include them or remove them? 
   - For now, leave in the special cases to see what the CNN will do.
