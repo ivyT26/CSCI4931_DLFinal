@@ -77,6 +77,18 @@ Progress Report
   - more links in the comments of the given code
 - Future works: I really would love to work on this project and improve on it for generations 6-8, which will take a lot of data collection on my part. Also, I would like to explore more efficient classification models and more accurate metrics to measure efficiency of classification models in the near future. 
 
+04/26: Ivy's offline work Pt 2
+- I emailed the professor regarding issues about training the model.
+- After making many modifications such as changing the types of layers, number of layers, kernel size, number of filters, acivation functions, adding dropout and batch normalization layers, etc., but the model never improved.
+- Professor responded and advised me to preprocess the data using mena subtraction, or normalization, given the link: https://cs231n.github.io/neural-networks-2/#datapre
+
+5/02: Updating model and testing it with oversampled data
+- We resolved the problem with Ivy's laptop not being able to run the model, so we have to rely on Brady's PC to run everything.
+- We planned out test cases to run the models for type 1 and 2, implemented oversampling to create equal class distribution, and included data augmentation for overfitting problem.
+- We also worked on the project presentation. (outline finished)
+- Plan on meeting again on 05/07 to finish the project report. 
+- Github should be updated with test results/observations and updated code of the models soon.
+
 Questions about the Project
 - How many data samples do we need for the project?
   - We were thinking of having sprites of each different pokemon from each generation, but are not sure if it would be enough data samples.
