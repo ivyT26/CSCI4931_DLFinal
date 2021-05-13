@@ -89,6 +89,17 @@ Progress Report
 - Plan on meeting again on 05/07 to finish the project report. 
 - Github should be updated with test results/observations and updated code of the models soon.
 
+5/07-5/13: Brady's offline work
+- Ran a list of tests we created over several days and recorded obseravtions
+  - Observations
+  - With a dropout of .2 the model seems to be overfitting very quickly. However, we obtained a very good accuracy for predicting type 2
+  - Added data augmentation because the model still seemed to be overfitting.
+  - The data augmentation is making the model learn very slowly so I am taking out the dropout layers to see if it learns quicker and gets a higher accuracy.
+  - Even with taking out dropout layers the model was significantly worse. It decreased the accuracy by nearly 20%. Therefore, we decided not to use the data augmentation and   revert to our previous data.
+    -After running through all our test cases I chose the top two tests and ran them again but instead of 50 epochs I ran with 600 epochs. The model produced 67.18% accuracy for type 1 and 88.55% accuracy for type 2. Combine the model had a 59.49% accuracy.
+- After all the tests were done created confusion matrices to display our data
+- Finished up the section on results in our final lab report
+
 Questions about the Project
 - How many data samples do we need for the project?
   - We were thinking of having sprites of each different pokemon from each generation, but are not sure if it would be enough data samples.
