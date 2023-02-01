@@ -1,10 +1,13 @@
 # CSCI4931_DLFinal
 
-This is where we will record all experiments and progress made in the pokemon type image classification.
+This repository is a final project from the Deep Learning course.  
+This course was taken at the University of Colorado Denver, Spring 2021. Professor: Ashis Biswas.  
 
-Neural Networks: Convolutional Neural Networks
+This is where we will record all experiments and progress made in the pokemon type image classification.  
 
-Progress Report
+Neural Networks: Convolutional Neural Networks  
+
+Progress Report  
 03/13: Image Data Collection
 - for the image data collection, we are planning on using sample sprites from https://pokemondb.net/sprites/ to obtain the images needed for classification
 - our other option is to use resized sprites from other previous works as our data samples like https://veekun.com/dex/downloads
