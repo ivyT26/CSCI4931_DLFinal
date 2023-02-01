@@ -3,6 +3,9 @@
 This repository is a final project from the Deep Learning course.  
 This course was taken at the University of Colorado Denver, Spring 2021. Professor: Ashis Biswas.  
 
+Language used: Python3  
+Technologies used: Tensorflow, Keras, NumPy, Pandas, Scikit-learn, Matplotlib, Jupyter Notebook  
+
 This is where we will record all experiments and progress made in the pokemon type image classification.  
 
 Neural Networks: Convolutional Neural Networks  
